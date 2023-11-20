@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-
+accounts = [
+  {
+    'title':'income',
+    'amount':'50'
+  },
+  {
+    'title':'expense',
+    'amount':'50'
+  },
+  {
+    'title':'deposit',
+    'amount':'50'
+  }
+]
 }
