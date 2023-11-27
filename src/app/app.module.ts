@@ -14,6 +14,9 @@ import {
 import {  MSAL_INSTANCE, MsalModule, MsalService } from "@azure/msal-angular";
 import {  IPublicClientApplication,  PublicClientApplication } from "@azure/msal-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 export function MSALInstanceFactory():IPublicClientApplication{
   return new PublicClientApplication({
@@ -40,7 +43,9 @@ export function MSALInstanceFactory():IPublicClientApplication{
     GoogleSigninButtonModule,
     MsalModule,
     BrowserAnimationsModule,
-   
+    MatSidenavModule,
+    MatIconModule,
+    NgApexchartsModule
   ],
   providers:  [
     {

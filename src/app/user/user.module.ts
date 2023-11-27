@@ -2,17 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list'
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
+import {
+  NgApexchartsModule
+} from "ng-apexcharts";
 
 @NgModule({
   declarations: [
-    SidebarComponent
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +25,8 @@ import { MatIconModule} from '@angular/material/icon';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgApexchartsModule
   ]
 })
 export class UserModule { }
