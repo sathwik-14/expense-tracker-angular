@@ -2,25 +2,27 @@
   <mat-drawer #drawer class="sidenav" opened="true" mode="side">
     <ul>
       <li routerLink="home" routerLinkActive="active" class="flex items-center gap-4 p-4 px-7">
-        <mat-icon>dashboard</mat-icon>
+        <i class="bx text-2xl bxs-dashboard"></i>
         <p class="text-lg font-medium">Dashboard</p>
       </li>
-      <li routerLink="" class="flex items-center gap-4 p-4 px-7">
-        <mat-icon>description</mat-icon>
-        <p class="text-lg font-medium">Document</p>
+      <li routerLink="accounts" class="flex items-center gap-4 p-4 px-7">
+        <i class="bx text-2xl bxs-bank"></i>
+        <p class="text-lg font-medium">Accounts</p>
       </li>
-      <li routerLink="" class="flex items-center gap-4 p-4 px-7">
-        <mat-icon>build</mat-icon>
-        <p class="text-lg font-medium">Setting</p>
+      <li routerLink="categories" class="flex items-center gap-4 p-4 px-7">
+        <i class="bx text-2xl bxs-category"></i>
+        <p class="text-lg font-medium">Categories</p>
       </li>
-      <li class="absolute bottom-0 left-0 flex items-center gap-4 p-4 px-7" (click)="drawer.toggle()">
+      <li routerLink="settings" class="flex items-center gap-4 p-4 px-7">
+        <i class="bx text-2xl bxs-cog"></i>
+        <p class="text-lg font-medium">Settings</p>
+      </li>
+      <li class=" absolute bottom-0 left-0 flex items-center gap-4 p-4 px-7" (click)="drawer.toggle()">
         <i class="bx bx-left-arrow-alt text-2xl"></i>
         <p class="text-lg font-medium">Close</p>
       </li>
     </ul>
   </mat-drawer>
 
-  <div class="flex-1">
     <router-outlet></router-outlet>
-  </div>
 </mat-drawer-container>

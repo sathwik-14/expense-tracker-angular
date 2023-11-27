@@ -16,6 +16,7 @@ import {  IPublicClientApplication,  PublicClientApplication } from "@azure/msal
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 export function MSALInstanceFactory():IPublicClientApplication{
   return new PublicClientApplication({
@@ -43,7 +44,8 @@ export function MSALInstanceFactory():IPublicClientApplication{
     MsalModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    NgApexchartsModule
   ],
   providers:  [
     {

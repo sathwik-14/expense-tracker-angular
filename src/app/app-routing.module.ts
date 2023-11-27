@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './common_component/login/login.component';
-import { CardComponent } from './card/card.component';
 
 const routes: Routes = [
   {

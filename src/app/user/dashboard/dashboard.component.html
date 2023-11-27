@@ -1,0 +1,175 @@
+<section class="flex flex-col md:grid md:grid-cols-3 gap-4">
+  <div class="col-span-2 p-4 h-full">
+    <div class="flex items-center md:justify-between">
+      <div class="text-2xl font-medium">Expenser</div>
+      <div class="md:hidden ml-auto"><i class="bx bx-search text-xl"></i></div>
+      <div class="md:hidden">
+        <i class="bx bx-bell text-xl rounded-md p-2"></i>
+      </div>
+      <div class="flex gap-2 items-center md:hidden">
+        <i
+          class="hover:cursor-pointer bx bx-user p-2 rounded-full bg-gradient-to-r text-white from-blue-200 to-blue-900"
+        ></i>
+      </div>
+      <div class="relative hidden md:block">
+        <input
+          class="w-[150px] md:w-full bg-transparent outline-none h-10 border rounded-xl px-3"
+          type="search"
+          placeholder="Search"
+        />
+        <i
+          class="bx bx-search absolute text-blue-400 top-[5px] text-xl right-4"
+        ></i>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4 my-10">
+      <div
+        *ngFor="let item of accounts"
+        class="flex gap-2 justify-center items-center shadow-lg rounded-xl p-7"
+      >
+        <div
+          class="w-14 h-14 rounded-lg bg-gradient-to-b from-white to-blue-300 flex justify-center items-center text-3xl"
+          [ngClass]="{'to-green-400':item.title == 'income','to-red-400':item.title == 'expense'}"
+        >
+      <i class="bx bx-money"[ngClass]="item.title == 'income'?'text-green-400':item.title == 'expense'?'text-red-400':'text-blue-400'"></i>
+      </div>
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-slate-400">{{ item.title }}</p>
+          <p>{{ item.amount | currency : "INR" }}</p>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div class="flex justify-between">
+      <p class="text-lg font-medium">Statistics</p>
+      <div>This week &nbsp; <i class="bx bx-chevron-down"></i></div>
+    </div>
+    <div id="chart" class="w-full">
+      <apx-chart
+        class="w-full"
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [yaxis]="chartOptions.yaxis"
+        [legend]="chartOptions.legend"
+        [fill]="chartOptions.fill"
+        [stroke]="chartOptions.stroke"
+        [tooltip]="chartOptions.tooltip"
+        [xaxis]="chartOptions.xaxis"
+      ></apx-chart>
+    </div>
+    <div class="text-lg font-medium">Transfer Money</div>
+    <div class="flex flex-col md:flex-row gap-4 mt-10">
+      <input
+        class="border border-gray-200 p-1 w-[150px] rounded-lg"
+        type="text"
+        placeholder="From"
+      />
+      <input
+        class="border border-gray-200 p-1 w-[150px] rounded-lg"
+        type="text"
+        placeholder="To"
+      />
+      <input
+        class="border border-gray-200 p-1 w-[150px] rounded-lg"
+        type="number"
+        name=""
+        placeholder="Amount"
+        id=""
+      />
+      <button class="p-3 bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-400 rounded-xl text-white">Send</button>
+    </div>
+  </div>
+
+  <div class="p-4">
+    <div class="hidden md:flex items-center justify-between">
+      <div class="relative flex items-center hover:cursor-pointer">
+        <i
+          class="bx bx-bell text-xl text-blue-400 bg-blue-100 rounded-md p-1.5"
+        ></i>
+        <div
+          class="bg-red-500 h-2 w-2 rounded-full absolute top-0 right-0 border border-white"
+        ></div>
+      </div>
+      <div class="flex gap-2 items-center">
+        <div>{{ user.name }}</div>
+        <i
+          class="hover:cursor-pointer bx bx-user p-2 rounded-full bg-gradient-to-r text-white from-blue-700 to-blue-900"
+        ></i>
+      </div>
+    </div>
+    <div class="text-lg font-medium mt-10 flex items-center gap-4">
+      <div>Credit Card</div>
+      <i class="bx bx-chevron-down"></i>
+    </div>
+    <div
+      class="text-white p-5 w-full bg-gradient-to-r from-blue-600 to-blue-700 to-blue-400 flex flex-col mt-6 rounded-2xl relative"
+    >
+      <div class="text-xl italic ml-auto font-bold">VISA</div>
+      <div class="my-3">Balance</div>
+      <div class="text-xl">{{ "100000" | currency : "INR" }}</div>
+      <div class="my-4 text-center text-lg">XXXX XXXX XXXX 3212</div>
+      <div class="flex justify-between mt-8">
+        <div>{{ user.name }}</div>
+        <div>03/25</div>
+      </div>
+    </div>
+    <div class="mt-10 flex justify-between items-center text-lg font-medium">
+      <div>Card Payments</div>
+      <i class="bx bx-dots-vertical-rounded"></i>
+    </div>
+    <div class="flex justify-between my-6 gap-10">
+      <div class="flex items-center text-2xl text-orange-400">
+        <i class="bx bxl-amazon"></i>
+      </div>
+      <div class="flex flex-col flex-1">
+        <div>Amazon Pay</div>
+        <div class="flex justify-between text-sm text-slate-400">
+          <div>27 OCT 2023</div>
+          <div>01:45 PM</div>
+        </div>
+      </div>
+      <div class="flex items-center">{{ "500" | currency : "INR" }}</div>
+    </div>
+    <div class="flex justify-between my-6 gap-10">
+      <div class="flex items-center text-2xl text-orange-400">
+        <i class="bx bx-cart"></i>
+      </div>
+      <div class="flex flex-col flex-1">
+        <div>Shopping</div>
+        <div class="flex justify-between text-sm text-slate-400">
+          <div>27 OCT 2023</div>
+          <div>01:45 PM</div>
+        </div>
+      </div>
+      <div class="flex items-center">{{ "500" | currency : "INR" }}</div>
+    </div>
+    <div class="flex justify-between my-6 gap-10">
+      <div class="flex items-center text-2xl text-orange-400">
+        <i class="bx bx-capsule"></i>
+      </div>
+      <div class="flex flex-col flex-1">
+        <div>Medicine</div>
+        <div class="flex justify-between text-sm text-slate-400">
+          <div>27 OCT 2023</div>
+          <div>01:45 PM</div>
+        </div>
+      </div>
+      <div class="flex items-center">{{ "500" | currency : "INR" }}</div>
+    </div>
+    <div class="flex justify-between my-6 gap-10">
+      <div class="flex items-center text-2xl text-orange-400">
+        <i class="bx bx-home"></i>
+      </div>
+      <div class="flex flex-col flex-1">
+        <div>House Rent</div>
+        <div class="flex justify-between text-sm text-slate-400">
+          <div>27 OCT 2023</div>
+          <div>01:45 PM</div>
+        </div>
+      </div>
+      <div class="flex items-center">{{ "500" | currency : "INR" }}</div>
+    </div>
+  </div>
+</section>
