@@ -11,7 +11,6 @@
   "private": true,
   "dependencies": {
     "@abacritt/angularx-social-login": "^2.1.0",
-    "@angular/animations": "^16.1.0",
     "@angular/cdk": "^16.2.12",
     "@angular/common": "^16.1.0",
     "@angular/compiler": "^16.1.0",
@@ -24,7 +23,9 @@
     "@azure/msal-angular": "^3.0.8",
     "apexcharts": "^3.44.0",
     "boxicons": "^2.1.4",
+    "ng-angular-popup": "^0.5.2",
     "ng-apexcharts": "^1.8.0",
+    "ngx-loading": "^15.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

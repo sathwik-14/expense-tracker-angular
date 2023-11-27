@@ -5,25 +5,32 @@ import { SocialUser } from '@abacritt/angularx-social-login';
 import { MsalService } from '@azure/msal-angular';
 import {
   AuthenticationResult,
-  InteractionStatus,
-  PopupRequest,
+
 } from '@azure/msal-browser';
+import { HttpClient } from '@angular/common/http';
+import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  public loading = false;
   drop =false;
   user!: SocialUser;
   msalBroadcastService: any;
   loggedIn!: boolean;
+  errMsg = '';
   public signInForm!: FormGroup;
   public signUpForm!: FormGroup;
   constructor(
     readonly builder: FormBuilder,
     private authService: SocialAuthService,
-    private msalService: MsalService
+    private msalService: MsalService,
+    private http: HttpClient,
+    private toast: NgToastService,
+    private route:Router
   ) {
     this.signInForm = this.builder.group({
       email: ['', [Validators.email, Validators.required]],
@@ -67,22 +74,31 @@ export class LoginComponent {
     });
   }
 
+  // get the signInPassword for error checking
+  get signInpassword() {
+    return this.signInForm.get('password');
+  }
+
+  // get the signupPassword for error checking
+  get signUpPassword() {
+    return this.signUpForm.get('password');
+  }
+
+
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
-      this.loggedIn = user != null;
+      this.loggedIn = (user != null);
       console.log(this.user);
     });
     this.msalService.instance
     .initialize()
     .then(() => {
-      
-      // MSAL is now initialized, you can make MSAL API calls here if needed.
+    // MSAL is now initialized, you can make MSAL API calls here if needed.
     })
     .catch((error) => {
       console.error("MSAL initialization error", error);
     });
-
   }
 
   microsoftLogin() {
@@ -96,11 +112,52 @@ export class LoginComponent {
   }
 
 
+
   onSubmit() {
+    this.loading = true;
     if (!this.drop) {
-      console.log(this.signInForm.value);
+      const signInObj = {
+        email: this.signInForm.value.email,
+        password:this.signInForm.value.password
+      }
+      this.http.post('https://j7zbx560-3000.asse.devtunnels.ms/auth/login', signInObj).subscribe((res:any) => {
+        if (res.success) {
+          this.loading = false;
+          this.toast.success({detail:'Success',summary:'Login Suceessfull'})
+          this.route.navigate(['home']);
+
+        }
+        else {
+          this.loading = false;
+          this.errMsg = res.msg;
+          this.toast.error({detail:'Error Message',summary:this.errMsg})
+        }
+      }
+        
+      )
+      return;
+      
     }
-    console.log(this.signUpForm.value);
+    const obj = {
+      fn: this.signUpForm.value.name.fName,
+      ln: this.signUpForm.value.name.lName,
+      email: this.signUpForm.value.email,
+      password:this.signUpForm.value.password
+    }
+    
+    this.http.post('https://j7zbx560-3000.asse.devtunnels.ms/auth/register', obj).subscribe((res:any)=> {
+      if (res.success) {
+        this.loading = false;
+        this.toast.success({ detail: 'Success', summary: 'SignUp successfull' })
+        this.drop = !this.drop;
+      }
+      else {
+        this.loading = false;
+        this.errMsg = res.msg;
+        this.toast.error({detail:'Error Message',summary:this.errMsg})
+      }
+      
+    })
   }
 
   resetForm(form:string) {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './common_component/login/login.component';
 import { CardComponent } from './card/card.component';
@@ -17,7 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { SidenavComponent } from './common_component/sidenav/sidenav.component';
+import { NgToastModule } from 'ng-angular-popup';
+import { NgxLoadingModule } from "ngx-loading";
 export function MSALInstanceFactory():IPublicClientApplication{
   return new PublicClientApplication({
     auth:{
@@ -34,18 +37,22 @@ export function MSALInstanceFactory():IPublicClientApplication{
     AppComponent,
     LoginComponent,
     CardComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    NgToastModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
     MsalModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatIconModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers:  [
     {
@@ -74,7 +81,8 @@ export function MSALInstanceFactory():IPublicClientApplication{
       provide:MSAL_INSTANCE,
       useFactory: MSALInstanceFactory
     },   
-
+    
+    
   ],
   bootstrap: [AppComponent]
 })

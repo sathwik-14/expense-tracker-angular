@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mx-auto">
   <div class="form-wrapper">
     <div class="login-container" [class.drop]="drop">
       <div class="login-message">
@@ -20,13 +20,18 @@
               <input type="password" placeholder="Enter password" formControlName="password"/>
               <i class="bx bx-lock-alt"></i>
             </div>
+            <div class="flex bg-orange-100 items-center rounded-md p-2" *ngIf="signInpassword?.invalid">
+              <i class='bx bx-info-circle mr-3 text-lg '></i>
+              <p class="m-0">Password must contain at least 1 lowercase,uppercase letter,1 digit and be at least 8 characters long</p>
+
+            </div>
           </div>
           <div class="login-forgot">
-            <a href="">Forgot password?</a>
+            <a>Forgot password?</a>
           </div>
-          <a routerLink="home" class="login-button">
-            <button>Sign In</button>
-          </a>
+          <div class="login-button">
+            <button [disabled]="signInForm.invalid">Sign In</button>
+          </div>
         </form>
 
         <div class="login-options">
@@ -75,9 +80,14 @@
               <input type="password" placeholder="Enter password" formControlName="password"/>  
               <i class="bx bx-lock-alt"></i>
             </div>
+            <div class="flex bg-orange-100 items-center rounded-md p-2" *ngIf="signUpPassword?.invalid">
+              <i class='bx bx-info-circle mr-3 text-lg'></i>
+              <p class="m-0">Password must contain at least 1 lowercase,uppercase letter,1 digit and be at least 8 characters long</p>
+
+            </div>
           </div>
           <div class="login-button">
-            <button>Sign Up</button>
+            <button [disabled]="signUpForm.invalid">Sign Up</button>
           </div>
         </form>
       </div>
@@ -102,3 +112,10 @@
     </div>
   </div>
 </div>
+
+
+<!-- api loader -->
+<ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>

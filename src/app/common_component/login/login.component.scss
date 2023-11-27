@@ -9,9 +9,9 @@ a {
   text-decoration: none;
 }
 .container {
-  width: 100%;
+  width: 100% !important;
   height: 100vh;
-  @include position(column, center, center);
+  @include position('', center, center);
   padding: 1rem;
   .form-wrapper {
     width: min(100%, 539px);
@@ -102,7 +102,7 @@ a {
           font-size: 1rem;
           color: white;
           background: #273ea8;
-          cursor: pointer;
+          
         }
       }
       .login-options {
