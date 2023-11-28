@@ -31,9 +31,15 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
+<<<<<<< Updated upstream
     "@angular-devkit/build-angular": "^16.1.4",
     "@angular/cli": "~16.1.4",
     "@angular/compiler-cli": "^17.0.4",
+=======
+    "@angular-devkit/build-angular": "^17.0.3",
+    "@angular/cli": "~17.0.3",
+    "@angular/compiler-cli": "^16.1.0",
+>>>>>>> Stashed changes
     "@types/jasmine": "~4.3.0",
     "autoprefixer": "^10.4.16",
     "jasmine-core": "~4.6.0",
