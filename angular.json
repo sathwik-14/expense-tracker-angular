@@ -33,9 +33,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/boxicons/css/boxicons.css",
-              "node_modules/tailwindcss/tailwind.css",
-              "node_modules/ngx-toastr/toastr.css" 
-            ],
+              "node_modules/tailwindcss/tailwind.css"            ],
             "scripts": []
           },
           "configurations": {

@@ -19,7 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SidenavComponent } from './common_component/sidenav/sidenav.component';
-import { NgToastModule } from 'ng-angular-popup';
+// import { NgToastModule } from 'ng-angular-popup';
 import { NgxLoadingModule } from "ngx-loading";
 export function MSALInstanceFactory():IPublicClientApplication{
   return new PublicClientApplication({
@@ -44,7 +44,7 @@ export function MSALInstanceFactory():IPublicClientApplication{
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule,
+    // NgToastModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
     MsalModule,
